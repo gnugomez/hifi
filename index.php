@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+require __DIR__ . '/vendor/autoload.php';
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <?php
-    require_once('dbcon.php');
-    ?>
-</body>
-
-</html>
+//INCLUDING APP CORE
+require_once __DIR__ . '/core.php';
+//INCLUDING APP TEMPLATES
+$views = glob(__DIR__ . '/views/controllers/*.php');
+foreach ($views as $view) {
+    require_once $view;
+}
+//INCLUDING ROUTER
+require_once __DIR__ . '/router.php';
+//INCLUDING APP SETTINGS
+require_once __DIR__ . '/settings.php';
+//INCLUDING DB CONNECTION
+require_once __DIR__ . '/dbcon.php';
