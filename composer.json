@@ -1,4 +1,7 @@
 {
+  "name": "HiFi repo",
+  "description": "A web app to share High Fidelity music with other people",
+  "license": "MIT"
   "require": {
     "php": "^8.0.0",
     "thunderer/shortcode": "^0.7",
