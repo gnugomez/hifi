@@ -1,5 +1,4 @@
 <?php
-
 define("MYSQL_URL", parse_url(getenv("CLEARDB_DATABASE_URL")));
 define("MYSQL_SERVER", MYSQL_URL["host"]);
 define("MYSQL_USER", MYSQL_URL["user"]);

@@ -1,14 +1,29 @@
 <?php
-global $core;
-$core = new Core();
+require_once __DIR__ . "/routes.php";
+require_once __DIR__ . '/views/view.php';
 
-class Core
+class core extends AltoRouter
 {
-	public View $actualView;
+	public view $actualView;
+
+	public function mountApp()
+	{
+		$match = $this->match();
+
+		if (is_array($match) && is_callable($match['target'])) {
+			call_user_func_array($match['target'], $match['params']);
+			$this->render("default");
+		} else {
+			// no route was matched
+			header($_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
+		}
+	}
 
 	public function renderView(): void
 	{
+		$this->actualView->beforeMount();
 		echo $this->actualView->render();
+		$this->actualView->mounted();
 	}
 
 	public function renderTemplate(string $templateName): void
@@ -18,12 +33,12 @@ class Core
 		echo ob_get_clean();
 	}
 
-	public function setView(View $view): void
+	public function setView(view $view): void
 	{
 		$this->actualView = $view;
 	}
 
-	public function getView(): View
+	public function getView(): view
 	{
 		return $this->actualView;
 	}
@@ -36,21 +51,5 @@ class Core
 	}
 }
 
-abstract class View implements IView
-{
-	public function __construct()
-	{
-		global $core;
-		$core->setView($this);
-	}
-
-	public static function init()
-	{
-		return new static();
-	}
-}
-
-interface IView
-{
-	public function render(): string;
-}
+$core = new core($routes);
+$core->mountApp();
