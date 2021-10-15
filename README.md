@@ -5,6 +5,27 @@
 
 👨🏻‍🎤 High Fidelity songs repo app
 
+## ⚙️ Setup
+### Requeriments
+- `PHP ^8.0.0`
+- `MySQL DB`
+- `php composer`
+
+
+1. Clone repo
+```
+git clone https://github.com/gnugomez/hifi.git
+cd hifi
+```
+2. Install composer vendors
+```
+composer update
+```
+3. Config .env
+`
+Create an .env file and put the below variables.
+`
+
 ## 👍 Current specs
 - `PHP ^8.0.0`
 - `MySQL DB`
