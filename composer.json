@@ -1,5 +1,5 @@
 {
-  "name": "HiFi repo",
+  "name": "gnugomez/hifi",
   "description": "A web app to share High Fidelity music with other people",
   "license": "MIT",
   "require": {
