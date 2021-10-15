@@ -1,7 +1,5 @@
 # HiFi Songs Repo
 [![Heroku](https://heroku-badge.herokuapp.com/?app=gnugomez-hifi)](https://gnugomez-hifi.herokuapp.com)
-[![Latest Stable Version](https://poser.pugx.org/gnugomez/hifi/v/stable.svg)](https://packagist.org/gnugomez/hifi/shortcode)
-[![License](https://poser.pugx.org/gnugomez/hifi/license.svg)](https://packagist.org/packages/gnugomez/hifi)
 
 👨🏻‍🎤 High Fidelity songs repo app
 
