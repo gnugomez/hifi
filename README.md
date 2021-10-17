@@ -1,6 +1,9 @@
 # HiFi Songs Repo
 
 [![Heroku](https://heroku-badge.herokuapp.com/?app=gnugomez-hifi)](https://gnugomez-hifi.herokuapp.com)
+![Release](https://shields.io/github/v/release/gnugomez/hifi?display_name=release&include_prereleases&sort=date)
+![License](https://shields.io/github/license/gnugomez/hifi)
+
 
 👨🏻‍🎤 A web app to share High Fidelity music with other people.
 
