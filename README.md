@@ -37,7 +37,7 @@ composer update
 ## ⏱ To do specs
 
 - [x] Implement [`AltRouter`](https://github.com/dannyvankooten/AltoRouter).
-- [x] Code Login and register with bcript and prepared statements to prevent SQL Injection ad tags stripped to prevent XSS attacks.
+- [x] Code Login and register with bcrypt and prepared statements to prevent SQL Injection ad tags stripped to prevent XSS attacks.
 - [ ] Code sessions with tokens also stored inside the db.
 - [ ] Extend AltoRouter fuctionality to use middlewares to guard routes.
 - [ ] Create a profile page where the user will be able to change personal data and upload a profile pic.
