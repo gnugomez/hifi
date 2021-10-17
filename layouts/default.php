@@ -4,6 +4,11 @@
 <?php
 global $core;
 $core->renderTemplate("head") ?>
+<style>
+	input {
+		display: block;
+	}
+</style>
 
 <body>
 	<?php $core->renderView() ?>

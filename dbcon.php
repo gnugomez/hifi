@@ -39,12 +39,19 @@ class database extends mysqli
 		return $this->query("SELECT * FROM users")->fetch_all(MYSQLI_ASSOC);
 	}
 
-	public function getUser(string $username): array
+	public function getUser(string $username, string $email = ""): array
 	{
-		$stmt = $this->prepare("SELECT * FROM users where username = ?");
-		$stmt->bind_param("s", $username);
+		$stmt = $this->prepare("SELECT * FROM users where username = ? OR email = ?");
+		$stmt->bind_param("ss", $username, $email);
 		$stmt->execute();
 		return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+	}
+
+	public function addUser(string $email, string $username, string $password): bool
+	{
+		$stmt = $this->prepare("INSERT INTO USERS(email, username, password) VALUES(?, ?, ?)");
+		$stmt->bind_param("sss", $email, $username, $password);
+		return $stmt->execute();;
 	}
 
 	/* 	public function addFonsi($username, $password, $email)

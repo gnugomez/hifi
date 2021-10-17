@@ -6,8 +6,12 @@ class core extends AltoRouter
 {
 	public view $actualView;
 
+	public string $requestMethod;
+
 	public function mountApp()
 	{
+		$this->requestMethod = $_SERVER['REQUEST_METHOD'];
+
 		$match = $this->match();
 
 		if (is_array($match) && is_callable($match['target'])) {
