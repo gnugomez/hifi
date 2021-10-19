@@ -2,7 +2,6 @@
 <a href="<? echo $this->core->generate('home') ?>">Home</a>
 <a href="<? echo $this->core->generate('register') ?>">Registro</a>
 <?php
-global $DB;
 echo "<pre>" . print_r($this->errors, true) . "</pre>";
 ?>
 <form action="" method="post">

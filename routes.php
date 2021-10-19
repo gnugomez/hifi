@@ -6,7 +6,7 @@ importFromDir("/views/auth/controllers");
 
 $routes = array(
 	array('GET|POST', '/', "home::init", "home"),
-	array('GET|POST', '/auth/login', "login::init", "login"),
-	array('GET|POST', '/auth', "login::redirect", "authRedirect"),
-	array('GET|POST', '/auth/register', "register::init", "register")
+	array('GET', '/logout', "session::logout", "logout"),
+	array('GET|POST', '/auth/login', "login::init", "login", "middleware::noUser"),
+	array('GET|POST', '/auth/register', "register::init", "register", "middleware::noUser")
 );

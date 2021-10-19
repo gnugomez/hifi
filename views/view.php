@@ -14,11 +14,15 @@ abstract class view implements IView
 		global $core;
 		return new static($core);
 	}
+	public function mounted(): void
+	{
+	}
+	public function beforeMount(): void
+	{
+	}
 }
 
 interface IView
 {
 	public function render(): string;
-	public function mounted(): void;
-	public function beforeMount(): void;
 }

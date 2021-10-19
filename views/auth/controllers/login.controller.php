@@ -3,10 +3,6 @@ class login extends view
 {
 	public $errors = array();
 
-	public function mounted(): void
-	{
-	}
-
 	public function beforeMount(): void
 	{
 		if ($this->core->requestMethod === 'POST') {
@@ -16,14 +12,16 @@ class login extends view
 
 	private function doLogin()
 	{
-		global $DB;
 		$user = get_array_value($_POST, "user", null);
 		$pass = get_array_value($_POST, "pass", null);
 
 		if ($user && $pass) {
-			$queryUser = $DB->getUser($user);
+			$queryUser = $this->core->api->getUser($user);
 			if (count($queryUser)) {
 				if (password_verify($pass, get_array_value($queryUser[0], "password"))) {
+					$this->core->session->user = $queryUser;
+					header("Location: " . $this->core->generate("home"), false);
+					die();
 				} else {
 					$this->errors["wrong_password"] = "el nombre de usuario o la contraseña son incorrectos";
 				}

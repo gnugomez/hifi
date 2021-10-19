@@ -1,13 +1,7 @@
 <?php
-global $DB;
-
 class register extends view
 {
 	public $errors = array();
-
-	public function mounted(): void
-	{
-	}
 
 	public function beforeMount(): void
 	{
@@ -18,21 +12,20 @@ class register extends view
 
 	private function doRegister()
 	{
-		global $DB;
 		$user = get_array_value($_POST, "user", null);
 		$email = get_array_value($_POST, "email", null);
 		$pass = get_array_value($_POST, "pass", null);
 		$cpass = get_array_value($_POST, "cpass", null);
 
 		if ($user && $email && $pass && $cpass) {
-			$queryUser = $DB->getUser($user, $email);
+			$queryUser = $this->core->api->getUser($user, $email);
 
 			if (!count($queryUser)) {
 
 				if ($pass == $cpass) {
 					if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 						$hashedPass = password_hash($pass, PASSWORD_DEFAULT);
-						$DB->addUser($email, $user, $hashedPass);
+						$this->core->api->addUser($email, $user, $hashedPass);
 					} else {
 						$this->errors["wrong_email"] = "El correo introducido no es válido";
 					}

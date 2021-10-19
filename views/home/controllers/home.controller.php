@@ -1,13 +1,6 @@
 <?php
 class home extends view
 {
-	public function mounted(): void
-	{
-	}
-
-	public function beforeMount(): void
-	{
-	}
 
 	public function render(): string
 	{
