@@ -1,35 +1,18 @@
 <?php
+include_once __DIR__ . '/../../../services/auth.service.php';
+
 class login extends view
 {
 	public $errors = array();
+	private authService $auth;
 
 	public function beforeMount(): void
 	{
+		$this->auth = authService::getInstance();
 		if ($this->core->requestMethod === 'POST') {
-			$this->doLogin();
-		}
-	}
-
-	private function doLogin()
-	{
-		$user = get_array_value($_POST, "user", null);
-		$pass = get_array_value($_POST, "pass", null);
-
-		if ($user && $pass) {
-			$queryUser = $this->core->api->getUser($user);
-			if (count($queryUser)) {
-				if (password_verify($pass, get_array_value($queryUser[0], "password"))) {
-					$this->core->session->user = $queryUser;
-					header("Location: " . $this->core->generate("home"), false);
-					die();
-				} else {
-					$this->errors["wrong_password"] = "el nombre de usuario o la contraseña son incorrectos";
-				}
-			} else {
-				$this->errors["user_do_not_exist"] = "el usuario que has introducido no existe";
-			}
-		} else {
-			$this->errors["no_user_and_pass"] = "introduce usuario y contraseña";
+			$user = get_array_value($_POST, "user", null);
+			$pass = get_array_value($_POST, "pass", null);
+			$this->errors = $this->auth?->doLogin($user, $pass);
 		}
 	}
 

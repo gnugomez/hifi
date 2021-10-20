@@ -1,6 +1,16 @@
 <?php
 class database extends mysqli
 {
+	private static database $instance;
+
+	public static function getInstance(): database
+	{
+		if (!isset(self::$instance)) {
+			self::$instance = new self;
+		}
+
+		return self::$instance;
+	}
 
 	public function __construct()
 	{

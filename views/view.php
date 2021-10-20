@@ -11,7 +11,7 @@ abstract class view implements IView
 
 	public static function init()
 	{
-		global $core;
+		$core = core::getInstance();
 		return new static($core);
 	}
 	public function mounted(): void

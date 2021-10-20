@@ -2,11 +2,13 @@
 require_once __DIR__ . '/../views/view.php';
 //INCLUDING DB CONNECTION
 require_once __DIR__ . '/database.php';
+//INCLUDING SESSION MANAGER
 require_once __DIR__ . '/session.php';
+//INCLUDING API CALLBACKS
+require_once __DIR__ . '/../services/content.service.php';
 
 class core extends AltoRouter
 {
-	public content $api;
 
 	public view $actualView;
 
@@ -14,13 +16,9 @@ class core extends AltoRouter
 
 	public session $session;
 
-	public $prev;
-
-	public $next;
-
 	public $match;
 
-	private static $instance;
+	private static core $instance;
 
 	public static function getInstance($routes = null)
 	{
@@ -40,8 +38,6 @@ class core extends AltoRouter
 	 */
 	public function mountApp()
 	{
-		$this->api = new content(new database());
-
 		$this->requestMethod = $_SERVER['REQUEST_METHOD'];
 
 		$this->match = $this->match();
@@ -104,9 +100,23 @@ class core extends AltoRouter
 	{
 		$this->session = session::getInstance();
 
-		$next = $this->match;
+		$next = $this->match();
 
-		$this->session->prev = $next;
+		$this->session->next = $next;
+	}
+
+	public function setUpLastRoute()
+	{
+		$this->session->prev = $this->match();
+	}
+
+	public function getPrevRoute(): string
+	{
+		return $this->session->prev ? $this->session->prev["name"] : "home";
+	}
+	public function getNextRoute(): string
+	{
+		return $this->session->next ? $this->session->next["name"] : "home";
 	}
 
 	public function render(string $layoutName): void
@@ -115,6 +125,7 @@ class core extends AltoRouter
 		ob_start();
 		require __DIR__ . "/../layouts/$layoutName.php";
 		echo ob_get_clean();
+		$this->setUpLastRoute();
 	}
 
 	/**
