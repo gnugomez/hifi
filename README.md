@@ -27,7 +27,7 @@ cd hifi
 2. Install composer vendors
 
 ```
-composer update
+composer install
 ```
 
 3. Config .env
