@@ -42,10 +42,10 @@ composer update
 - [x] Code Login and register with bcrypt and prepared statements to prevent SQL Injection ad tags stripped to prevent XSS attacks.
 - [x] Code sessions with tokens also stored inside server side with php sessions.
 - [x] Extend AltoRouter fuctionality to use middlewares to guard routes.
-- [ ] Create a profile page where the user will be able to change personal data and upload a profile pic.
+- [ ] Implement [`Twig`](https://github.com/twigphp/Twig) to render php values inside html without the need to exec anything there.
 - [ ] Implement content type system to manage data more quick and secure.
+- [ ] Create a profile page where the user will be able to change personal data and upload a profile pic.
 - [ ] Implement shortcodes to be able to declare components with [`thunderer/Shortcode`](https://github.com/thunderer/Shortcode).
-- [ ] Implement [`Twig`](https://github.com/twigphp/Twig) to be ablre to render php values inside html without the need to exec anything there.
 
 ## 🧮 env
 
