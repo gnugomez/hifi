@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../views/view.php';
+require_once __DIR__ . '/../views/viewController.php';
 //INCLUDING DB CONNECTION
 require_once __DIR__ . '/database.php';
 //INCLUDING SESSION MANAGER
@@ -10,7 +10,7 @@ require_once __DIR__ . '/../services/content.service.php';
 class core extends AltoRouter
 {
 
-	public view $actualView;
+	public viewController $actualView;
 
 	public string $requestMethod;
 
@@ -41,6 +41,9 @@ class core extends AltoRouter
 		$this->requestMethod = $_SERVER['REQUEST_METHOD'];
 
 		$this->match = $this->match();
+
+		$this->loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../templates/');
+		$this->twig = new \Twig\Environment($this->loader, ['debug' => true]);
 
 		if (is_array($this->match) && is_callable($this->match['target'])) {
 
@@ -86,12 +89,12 @@ class core extends AltoRouter
 		echo ob_get_clean();
 	}
 
-	public function setView(view $view): void
+	public function setView(viewController $view): void
 	{
 		$this->actualView = $view;
 	}
 
-	public function getView(): view
+	public function getView(): viewController
 	{
 		return $this->actualView;
 	}

@@ -1,7 +1,7 @@
 <?php
 include_once __DIR__ . '/../../../services/auth.service.php';
 
-class register extends view
+class register extends viewController
 {
 	public $errors = array();
 

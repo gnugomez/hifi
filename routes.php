@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/views/view.php';
+require_once __DIR__ . '/views/viewController.php';
 // importing views controllers
 importFromDir("/views/home/controllers");
 importFromDir("/views/auth/controllers");

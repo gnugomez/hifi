@@ -1,11 +1,10 @@
 <?php
-class home extends view
+class home extends viewController
 {
 
 	public function render(): string
 	{
-		ob_start();
-		require __DIR__ . '/../home.php';
-		return ob_get_clean();
+		$this->core->loader->addPath(__DIR__ . "/../", 'home');
+		return $this->core->twig->render('@home/index.html', ["hola" => "me llamo manel"]);
 	}
 }

@@ -1,5 +1,5 @@
 <?php
-abstract class view implements IView
+abstract class viewController implements IView
 {
 	public core $core;
 
