@@ -1,4 +1,6 @@
 <?php
+include_once __DIR__ . '/../../../services/auth.service.php';
+
 class register extends view
 {
 	public $errors = array();
@@ -12,31 +14,23 @@ class register extends view
 
 	private function doRegister()
 	{
+		$this->auth = authService::getInstance();
+		$this->session = session::getInstance();
+
 		$user = get_array_value($_POST, "user", null);
 		$email = get_array_value($_POST, "email", null);
 		$pass = get_array_value($_POST, "pass", null);
 		$cpass = get_array_value($_POST, "cpass", null);
 
-		if ($user && $email && $pass && $cpass) {
-			$queryUser = $this->core->api->getUser($user, $email);
-
-			if (!count($queryUser)) {
-
-				if ($pass == $cpass) {
-					if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-						$hashedPass = password_hash($pass, PASSWORD_DEFAULT);
-						$this->core->api->addUser($email, $user, $hashedPass);
-					} else {
-						$this->errors["wrong_email"] = "El correo introducido no es válido";
-					}
-				} else {
-					$this->errors["passwords_dont_match"] = "Las contraseña no coinciden";
-				}
-			} else {
-				$this->errors["email_or_username_taken"] = "El nombre de usuario o el correo ya esta en uso por otro usuario";
+		if ($pass == $cpass) {
+			$res = $this->auth->registerUser($user, $email, $pass);
+			if (isset($res["success"])) {
+				$this->core->routerPush("login");
+			} else if (isset($res["errors"])) {
+				$this->errors = $res["errors"];
 			}
 		} else {
-			$this->errors["empty_fields"] = "Debes rellenar todos los campos";
+			$this->errors["passwords_dont_match"] = "Las contraseña no coinciden";
 		}
 	}
 

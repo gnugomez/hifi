@@ -128,6 +128,11 @@ class core extends AltoRouter
 		$this->setUpLastRoute();
 	}
 
+	public function routerPush(string $route)
+	{
+		header("Location: " . $this->generate($route), false);
+		die();
+	}
 	/**
 	 * Match a given Request Url against stored routes
 	 * @param string $requestUrl
