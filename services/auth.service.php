@@ -15,6 +15,11 @@ class authService extends service
 		$this->core = core::getInstance();
 	}
 
+	public function isloggedin(): bool
+	{
+		return isset($this->session->user);
+	}
+
 	/**
 	 * This function check if the password and the user is correct if it isn't it returns an array with the errors
 	 *

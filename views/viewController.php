@@ -3,16 +3,19 @@ abstract class viewController implements IView
 {
 	public core $core;
 
-	public function __construct(core $core)
+	public array $data = array();
+
+	public function __construct()
 	{
-		$this->core = $core;
-		$core->setView($this);
+		$this->auth = authService::getInstance();
+		$this->core = core::getInstance();
+		$this->core->setView($this);
+		$this->data["isLoggedin"] = $this->auth->isloggedin();
 	}
 
 	public static function init()
 	{
-		$core = core::getInstance();
-		return new static($core);
+		return new static();
 	}
 	public function mounted(): void
 	{
