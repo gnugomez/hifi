@@ -1,14 +1,20 @@
 <?php
-abstract class viewController implements IView
+
+namespace App\Model;
+
+use App\Core;
+use App\Services\AuthService;
+
+abstract class ViewController implements IView
 {
-	public core $core;
+	public Core $core;
 
 	public array $data = array();
 
 	public function __construct()
 	{
-		$this->auth = authService::getInstance();
-		$this->core = core::getInstance();
+		$this->auth = AuthService::getInstance();
+		$this->core = Core::getInstance();
 		$this->core->setView($this);
 		$this->data["isLoggedin"] = $this->auth->isloggedin();
 	}

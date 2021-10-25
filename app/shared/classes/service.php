@@ -1,7 +1,10 @@
 <?php
-class service
+
+namespace App;
+
+class Service
 {
-	private static service $instance;
+	private static Service $instance;
 
 	public static function getInstance()
 	{
