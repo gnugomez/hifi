@@ -56,7 +56,7 @@ class core extends AltoRouter
 			$this->render("default");
 		} else {
 			// no route was matched
-			header($_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
+			/* header($_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found'); */
 		}
 	}
 
