@@ -1,18 +1,23 @@
 <?php
-require_once __DIR__ . '/service.php';
 
-class authService extends service
+namespace App\Services;
+
+use App\Service;
+use App\Core;
+use App\Session;
+
+class AuthService extends Service
 {
 
-	private session $session;
-	private contentService $contentService;
-	private core $core;
+	private Session $session;
+	private ContentService $contentService;
+	private Core $core;
 
 	public function __construct()
 	{
-		$this->session = session::getInstance();
-		$this->contentService = contentService::getInstance();
-		$this->core = core::getInstance();
+		$this->session = Session::getInstance();
+		$this->contentService = ContentService::getInstance();
+		$this->core = Core::getInstance();
 	}
 
 	public function isloggedin(): bool

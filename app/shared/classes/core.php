@@ -1,29 +1,29 @@
 <?php
-require_once __DIR__ . '/../views/viewController.php';
-//INCLUDING DB CONNECTION
-require_once __DIR__ . '/database.php';
-//INCLUDING SESSION MANAGER
-require_once __DIR__ . '/session.php';
-//INCLUDING API CALLBACKS
-require_once __DIR__ . '/../services/content.service.php';
 
-class core extends AltoRouter
+namespace App;
+
+use App\Model\ViewController;
+
+use AltoRouter;
+use RuntimeException;
+
+class Core extends AltoRouter
 {
 
-	public viewController $actualView;
+	public ViewController $actualView;
 
 	public string $requestMethod;
 
-	public session $session;
+	public Session $session;
 
 	public $match;
 
-	private static core $instance;
+	private static Core $instance;
 
-	public static function getInstance($routes = null)
+	public static function getInstance()
 	{
 		if (!isset(self::$instance)) {
-			self::$instance = new self($routes);
+			self::$instance = new self;
 		}
 
 		return self::$instance;
@@ -42,8 +42,7 @@ class core extends AltoRouter
 
 		$this->match = $this->match();
 
-		$this->loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../templates/');
-		$this->twig = new \Twig\Environment($this->loader, ['debug' => true]);
+		$this->injectTwig();
 
 		if (is_array($this->match) && is_callable($this->match['target'])) {
 
@@ -82,30 +81,43 @@ class core extends AltoRouter
 		$this->actualView->mounted();
 	}
 
+	/**
+	 * this method should be implemented inside modules
+	 *
+	 * @return void
+	 */
 	public function renderTemplate(string $templateName): void
 	{
-		ob_start();
-		require __DIR__ . "/../templates/$templateName.php";
-		echo ob_get_clean();
+		require __DIR__ . "/../../frontend/templates/$templateName.php";
 	}
 
-	public function setView(viewController $view): void
+	public function setView(ViewController $view): void
 	{
 		$this->actualView = $view;
 	}
 
-	public function getView(): viewController
+	public function getView(): ViewController
 	{
 		return $this->actualView;
 	}
 
+
 	public function setUpSessions()
 	{
-		$this->session = session::getInstance();
-
+		$this->session = Session::getInstance();
 		$next = $this->match();
-
 		$this->session->next = $next;
+	}
+
+	/**
+	 * this method should be implemented inside modules
+	 *
+	 * @return void
+	 */
+	private function injectTwig()
+	{
+		$this->loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/../../frontend/templates/');
+		$this->twig = new \Twig\Environment($this->loader, ['debug' => true]);
 	}
 
 	public function setUpLastRoute()

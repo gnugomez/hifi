@@ -1,12 +1,17 @@
 <?php
-require_once __DIR__ . '/service.php';
-class contentService extends service
+
+namespace App\Services;
+
+use App\Service;
+use App\Database;
+
+class ContentService extends Service
 {
-	private database $db;
+	private Database $db;
 
 	public function __construct()
 	{
-		$this->db = database::getInstance();
+		$this->db = Database::getInstance();
 	}
 
 	public function getAllUsers(): array

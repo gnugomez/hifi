@@ -1,5 +1,10 @@
 <?php
-class database extends mysqli
+
+namespace App;
+
+use mysqli;
+
+class Database extends mysqli
 {
 	private static database $instance;
 
@@ -41,11 +46,4 @@ class database extends mysqli
 		if (!IS_DEBUG) return;
 		echo "Error: $this->error";
 	}
-
-
-
-	/* 	public function addFonsi($username, $password, $email)
-	{
-		return $this->query("INSERT INTO fonsi (`username`,`passwd`,`email`) VALUES ('" . $username . "', '" . $password . "', '" . $email . "')");
-	} */
 }

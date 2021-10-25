@@ -1,7 +1,9 @@
 <?php
-include_once __DIR__ . '/../../../services/auth.service.php';
 
-class register extends viewController
+use App\Services\AuthService;
+use App\Session;
+
+class register extends App\Model\ViewController
 {
 	public $errors = array();
 
@@ -14,8 +16,8 @@ class register extends viewController
 
 	private function doRegister()
 	{
-		$this->auth = authService::getInstance();
-		$this->session = session::getInstance();
+		$this->auth = AuthService::getInstance();
+		$this->session = Session::getInstance();
 
 		$user = get_array_value($_POST, "user", null);
 		$email = get_array_value($_POST, "email", null);

@@ -59,7 +59,7 @@ if (!function_exists("substr_chop_start")) {
 }
 function importFromDir(string $dir, string $extension = ".php")
 {
-	$views = glob(__DIR__ . "${dir}/*${extension}");
+	$views = glob("${dir}/*${extension}");
 	foreach ($views as $view) {
 		require_once $view;
 	}

@@ -1,7 +1,9 @@
 <?php
-include_once __DIR__ . '/../../../services/auth.service.php';
 
-class login extends viewController
+use App\Services\AuthService;
+use App\Session;
+
+class login extends App\Model\ViewController
 {
 	public $errors = array();
 
@@ -12,8 +14,8 @@ class login extends viewController
 
 	public function doLogin(): void
 	{
-		$this->auth = authService::getInstance();
-		$this->session = session::getInstance();
+		$this->auth = AuthService::getInstance();
+		$this->session = Session::getInstance();
 
 		if ($this->core->requestMethod === 'POST') {
 			$user = get_array_value($_POST, "user", null);
@@ -37,8 +39,7 @@ class login extends viewController
 
 	public static function redirect()
 	{
-		global $core;
-		header("Location:" . $core->generate('login'));
-		die();
+		$core = App\Core::getInstance();
+		$core->routerPush("login");
 	}
 }

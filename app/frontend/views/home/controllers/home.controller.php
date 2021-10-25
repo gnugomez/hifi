@@ -1,5 +1,5 @@
 <?php
-class home extends viewController
+class home extends App\Model\ViewController
 {
 
 	public function render(): string

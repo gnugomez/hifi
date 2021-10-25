@@ -1,7 +1,10 @@
 <?php
-class middleware
+
+namespace App;
+
+class Middlewares
 {
-	public static function noUser(core $core)
+	public static function noUser(Core $core)
 	{
 		if (isset($core->session->user)) {
 			$core->routerPush("home");

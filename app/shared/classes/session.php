@@ -1,5 +1,6 @@
 <?php
 
+namespace App;
 /*
     Use the static method getInstance to get the object.
 */
@@ -8,7 +9,7 @@
  * Sessions api class
  * This is a very simple clas that supports the communication with the $SESSION global array
  */
-class session
+class Session
 {
 	const SESSION_STARTED = TRUE;
 	const SESSION_NOT_STARTED = FALSE;
@@ -125,11 +126,10 @@ class session
 	{
 		$instance = session::getInstance();
 
-		$core = core::getInstance();
+		$core = Core::getInstance();
 
 		$instance->destroy();
 
-		header("Location: " . $core->generate("home"), false);
-		die();
+		$core->routerPush("home");
 	}
 }
