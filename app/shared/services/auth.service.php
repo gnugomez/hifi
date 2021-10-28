@@ -2,11 +2,11 @@
 
 namespace App\Services;
 
-use App\Service;
+use App\Model\ServiceModel;
 use App\Core;
 use App\Session;
 
-class AuthService extends Service
+class AuthService extends ServiceModel
 {
 
 	private Session $session;

@@ -1,22 +1,22 @@
 <?php
 
-use App\Services\AuthService;
-use App\Session;
+namespace App\Frontend\Controllers;
 
-class register extends App\Model\ViewController
+use App\Services\AuthService, App\Session, App\Modules\frontend, App\Model\ViewModel;
+
+class register extends ViewModel
 {
 	public $errors = array();
 
 	public function beforeMount(): void
 	{
-		if ($this->core->requestMethod === 'POST') {
+		if ($this->core->router->requestMethod === 'POST') {
 			$this->doRegister();
 		}
 	}
 
 	private function doRegister()
 	{
-		$this->auth = AuthService::getInstance();
 		$this->session = Session::getInstance();
 
 		$user = get_array_value($_POST, "user", null);
@@ -38,8 +38,8 @@ class register extends App\Model\ViewController
 
 	public function render(): string
 	{
-		ob_start();
-		require __DIR__ . '/../register.php';
-		return ob_get_clean();
+		$module = frontend::getInstance();
+		$module->loadTemplates();
+		return $module->twig->render('@auth/register.html.twig', $this->data);
 	}
 }

@@ -5,7 +5,7 @@ namespace App\Model;
 use App\Core;
 use App\Services\AuthService;
 
-abstract class ViewController implements IView
+abstract class ViewModel implements IView
 {
 	public Core $core;
 
@@ -15,14 +15,14 @@ abstract class ViewController implements IView
 	{
 		$this->auth = AuthService::getInstance();
 		$this->core = Core::getInstance();
-		$this->core->setView($this);
 		$this->data["isLoggedin"] = $this->auth->isloggedin();
+		$this->setup();
 	}
 
-	public static function init()
+	public function setup(): void
 	{
-		return new static();
 	}
+
 	public function mounted(): void
 	{
 	}

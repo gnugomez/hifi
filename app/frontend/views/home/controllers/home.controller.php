@@ -1,10 +1,16 @@
 <?php
-class home extends App\Model\ViewController
+
+namespace App\Frontend\Controllers;
+
+use App\Model\ViewModel, App\Modules\frontend;
+
+class home extends ViewModel
 {
 
 	public function render(): string
 	{
-		$this->core->loader->addPath(__DIR__ . "/../", 'home');
-		return $this->core->twig->render('@home/index.html', $this->data);
+		$module = frontend::getInstance();
+		$module->loadTemplates();
+		return $module->twig->render('@home/index.html.twig', $this->data);
 	}
 }

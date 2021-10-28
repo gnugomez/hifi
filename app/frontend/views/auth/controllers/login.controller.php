@@ -1,12 +1,11 @@
 <?php
 
-use App\Services\AuthService;
-use App\Session;
+namespace App\Frontend\Controllers;
 
-class login extends App\Model\ViewController
+use App\Model\ViewModel, App\Modules\frontend, App\Services\AuthService, App\Session;
+
+class login extends ViewModel
 {
-	public $errors = array();
-
 	public function beforeMount(): void
 	{
 		$this->doLogin();
@@ -14,32 +13,25 @@ class login extends App\Model\ViewController
 
 	public function doLogin(): void
 	{
-		$this->auth = AuthService::getInstance();
 		$this->session = Session::getInstance();
 
-		if ($this->core->requestMethod === 'POST') {
+		if ($this->core->router->requestMethod === 'POST') {
 			$user = get_array_value($_POST, "user", null);
 			$pass = get_array_value($_POST, "pass", null);
 			$res = $this->auth->validateUser($user, $pass);
 			if (isset($res["success"])) {
 				$this->session->user = get_array_value($res["success"], "user");
 				$this->core->routerPush($this->core->getPrevRoute());
-			} else if (isset($res["errors"])) {
-				$this->errors = $res["errors"];
 			}
+
+			$this->data["res"] = $res;
 		}
 	}
 
 	public function render(): string
 	{
-		ob_start();
-		require __DIR__ . '/../login.php';
-		return ob_get_clean();
-	}
-
-	public static function redirect()
-	{
-		$core = App\Core::getInstance();
-		$core->routerPush("login");
+		$module = frontend::getInstance();
+		$module->loadTemplates();
+		return $module->twig->render('@auth/login.html.twig', $this->data);
 	}
 }

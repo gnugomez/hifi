@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
-class Service
+abstract class ServiceModel
 {
-	private static Service $instance;
+	private static ServiceModel $instance;
 
 	public static function getInstance()
 	{
