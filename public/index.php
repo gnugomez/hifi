@@ -11,7 +11,7 @@ try {
 
 	$core->registerModulesNamespace("App\Modules\\");
 
-	$core->registerModule(__DIR__ . "/../app/Frontend/Module.php", "Frontend");
+	$core->registerModule(__DIR__ . "/../app/frontend/Module.php", "Frontend");
 	/**
 	 * Instance router and register
 	 */
@@ -48,12 +48,6 @@ try {
 		'route' => '/logout',
 		'action' => 'App\Session::logout'
 	]);
-
-
-	/* 	['GET|POST', '/', "home::init", "home"],
-	['GET', '/logout', "App\Session::logout", "logout"],
-	['GET|POST', '/auth/login', "login::init", "login", "App\Middlewares::noUser"],
-	['GET|POST', '/auth/register', "register::init", "register", "App\Middlewares::noUser"] */
 
 	/**
 	 * Registering routes
