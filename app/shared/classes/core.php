@@ -2,16 +2,17 @@
 
 namespace App;
 
-use App\Model\ViewModel;
+use App\Providers\Component;
 
 use AltoRouter;
+use App\Services\AuthService;
 use RuntimeException;
 
 class Core extends AltoRouter
 {
 	private static Core $instance;
 
-	public ViewModel $actualView;
+	public Component $actualView;
 
 	public Session $session;
 
@@ -31,14 +32,19 @@ class Core extends AltoRouter
 		return self::$instance;
 	}
 
-	public function registerModule($path, $name)
+	public function registerModule($path, $className)
 	{
-		$this->modules[$name] = $path;
+		$this->modules[$className] = $path;
 	}
 
 	public function registerModulesNamespace($namespace)
 	{
 		$this->modulesNamespace = $namespace;
+	}
+
+	public function loadModule($name)
+	{
+		require_once $this->modules[$name];
 	}
 
 	/**
@@ -47,7 +53,7 @@ class Core extends AltoRouter
 	 *
 	 * @return void
 	 */
-	public function mountApp()
+	public function mountApp(): void
 	{
 
 		$match = $this->router->match();
@@ -72,46 +78,41 @@ class Core extends AltoRouter
 				if ($controller) {
 					$module->loadController($match['controller']);
 					$controller = new $controller['class']($match['params']);
-					$this->handle($controller);
+					$this->handle($module, $controller);
 				}
 			}
 		} else {
 			// no route was matched
-			/* header($_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found'); */
+			header($_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
 		}
 	}
 
-	public function loadModule($name)
+	public function handle(Module $module, Component $controller): void
 	{
-		require_once $this->modules[$name];
+		$module->render($controller);
+		$this->setUpLastRoute();
 	}
 
-	public function setUpRouter(Router $router)
+	public function setUpRouter(Router $router): void
 	{
 		$this->router = $router;
 
 		$this->router->initialize();
 	}
 
-
-
-	public function handle($view): void
+	public function getContext(): array
 	{
-		$view->beforeMount();
-		echo $view->render();
-		$view->mounted();
-		$this->setUpLastRoute();
+		return ['isLoggedin' => AuthService::getInstance()->isloggedin()];
 	}
 
-	public function setUpSessions()
+	public function setUpSessions(): void
 	{
 		$this->session = Session::getInstance();
 		$next = $this->router->match();
 		$this->session->next = $next;
 	}
 
-
-	public function setUpLastRoute()
+	public function setUpLastRoute(): void
 	{
 		$this->session->prev = $this->router->match();
 	}
@@ -123,11 +124,5 @@ class Core extends AltoRouter
 	public function getNextRoute(): string
 	{
 		return $this->session->next ? $this->session->next["name"] : "home";
-	}
-
-	public function routerPush(string $route)
-	{
-		header("Location: " . $this->router->generate($route), false);
-		die();
 	}
 }

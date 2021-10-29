@@ -4,7 +4,7 @@ namespace App\Modules;
 
 use App\Module;
 
-class frontend extends Module
+class Frontend extends Module
 {
 	public function __construct()
 	{
@@ -19,17 +19,17 @@ class frontend extends Module
 		 * Here we will register the avaliable controllers for this module
 		 */
 		$this->registerController([
-			'path' => __DIR__ . '/views/home/controllers/home.controller.php',
+			'path' => __DIR__ . '/views/home/controllers/Home.php',
 			'class' => 'App\Frontend\Controllers\home',
 			'name' => 'home'
 		]);
 		$this->registerController([
-			'path' => __DIR__ . '/views/auth/controllers/login.controller.php',
+			'path' => __DIR__ . '/views/auth/controllers/Login.php',
 			'class' => 'App\Frontend\Controllers\login',
 			'name' => 'login'
 		]);
 		$this->registerController([
-			'path' => __DIR__ . '/views/auth/controllers/register.controller.php',
+			'path' => __DIR__ . '/views/auth/controllers/Register.php',
 			'class' => 'App\Frontend\Controllers\register',
 			'name' => 'register'
 		]);

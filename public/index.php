@@ -11,7 +11,7 @@ try {
 
 	$core->registerModulesNamespace("App\Modules\\");
 
-	$core->registerModule(__DIR__ . "/../app/frontend/module.php", "frontend");
+	$core->registerModule(__DIR__ . "/../app/Frontend/Module.php", "Frontend");
 	/**
 	 * Instance router and register
 	 */
@@ -20,7 +20,7 @@ try {
 	$router->add([
 		'methods' => 'GET',
 		'route' => '/',
-		'module' => 'frontend',
+		'module' => 'Frontend',
 		'controller' => 'home',
 		'name' => 'home'
 	]);
@@ -28,7 +28,7 @@ try {
 	$router->add([
 		'methods' => 'GET|POST',
 		'route' => '/auth/login',
-		'module' => 'frontend',
+		'module' => 'Frontend',
 		'controller' => 'login',
 		'name' => 'login',
 		'middleware' => 'App\Middlewares::noUser'
@@ -37,7 +37,7 @@ try {
 	$router->add([
 		'methods' => 'GET|POST',
 		'route' => '/auth/register',
-		'module' => 'frontend',
+		'module' => 'Frontend',
 		'controller' => 'register',
 		'name' => 'register',
 		'middleware' => 'App\Middlewares::noUser'

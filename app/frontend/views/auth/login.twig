@@ -1,0 +1,13 @@
+{{ include("@global/head.twig") }}
+
+<h1>Login</h1>
+<ul>
+  {% for error in res.errors %}
+  <li>{{ error }}</li>
+  {% endfor %}
+</ul>
+<form action="" method="post">
+  <input type="text" name="user" placeholder="Username" />
+  <input type="password" name="pass" placeholder="Password" />
+  <button type="submit">Entrar</button>
+</form>

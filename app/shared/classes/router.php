@@ -12,13 +12,10 @@ class Router extends AltoRouter
 
 	public $match;
 
-	public function initialize()
-	{
-		$this->requestMethod = $_SERVER['REQUEST_METHOD'];
-
-		$this->match = $this->match();
-	}
-
+	/**
+	 * This method is used to get the instance of the Router class.
+	 * @return Router
+	 */
 	public static function getInstance($routes = [])
 	{
 		if (!isset(self::$instance)) {
@@ -28,6 +25,41 @@ class Router extends AltoRouter
 		return self::$instance;
 	}
 
+	/**
+	 * This method registers the requested method and the matched route.
+	 *
+	 * @return void
+	 */
+	public function initialize(): void
+	{
+		$this->requestMethod = $_SERVER['REQUEST_METHOD'];
+
+		$this->match = $this->match();
+	}
+
+	/**
+	 * This method is used to redirect the user to a given route name.
+	 * @param string $routeName
+	 * @param array $params
+	 */
+	public function redirect(string $routeName, array $params = []): void
+	{
+		$url = $this->generate($routeName, $params);
+
+		header("Location: $url");
+		exit;
+	}
+
+	/**
+	 * This method is used to map a new route with an array istead of separed parameters.
+	 * @param string $newRoute
+	 * Input example
+	 * 	['methods' => 'GET',
+	 *	'route' => '/',
+	 *	'module' => 'frontend',
+	 *	'controller' => 'home',
+	 *	'name' => 'home']
+	 */
 	public function add(array $newRoute)
 	{
 

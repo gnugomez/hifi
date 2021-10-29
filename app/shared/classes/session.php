@@ -125,11 +125,8 @@ class Session
 	public static function logout()
 	{
 		$instance = session::getInstance();
-
 		$core = Core::getInstance();
-
 		$instance->destroy();
-
-		$core->routerPush("home");
+		$core->router->redirect($core->getPrevRoute());
 	}
 }
