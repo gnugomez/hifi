@@ -2,11 +2,11 @@
 
 namespace App\Services;
 
-use App\Model\ServiceModel;
+use App\Providers\Service;
 use App\Core;
 use App\Session;
 
-class AuthService extends ServiceModel
+class AuthService extends Service
 {
 
 	private Session $session;
@@ -56,7 +56,7 @@ class AuthService extends ServiceModel
 		return $res;
 	}
 
-	public function registerUser(string $user, string $email, string $pass)
+	public function registerUser(string $user, string $email, string $pass): array
 	{
 		$errors = array();
 		$success = array();

@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
-use App\Model\ServiceModel;
+use App\Providers\Service;
 use App\Database;
 
-class ContentService extends ServiceModel
+class ContentService extends Service
 {
 	private Database $db;
 

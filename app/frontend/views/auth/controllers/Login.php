@@ -2,18 +2,26 @@
 
 namespace App\Frontend\Controllers;
 
-use App\Model\ViewModel, App\Modules\frontend, App\Services\AuthService, App\Session;
+use App\Providers\Component, App\Modules\frontend, App\Services\AuthService, App\Session;
 
-class login extends ViewModel
+class login extends Component
 {
-	public function beforeMount(): void
+
+	public function setup(...$props): array
 	{
-		$this->doLogin();
+		$res = $this->doLogin();
+
+		return [
+			'title' => 'Login',
+			'template' => '@auth/login.twig',
+			'res' => $res
+		];
 	}
 
-	public function doLogin(): void
+	public function doLogin(): array
 	{
 		$this->session = Session::getInstance();
+		$this->auth = AuthService::getInstance();
 
 		if ($this->core->router->requestMethod === 'POST') {
 			$user = get_array_value($_POST, "user", null);
@@ -21,10 +29,12 @@ class login extends ViewModel
 			$res = $this->auth->validateUser($user, $pass);
 			if (isset($res["success"])) {
 				$this->session->user = get_array_value($res["success"], "user");
-				$this->core->routerPush($this->core->getPrevRoute());
+				$this->core->router->redirect($this->core->getPrevRoute());
 			}
 
-			$this->data["res"] = $res;
+			return $res;
+		} else {
+			return [];
 		}
 	}
 
