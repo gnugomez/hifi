@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Providers\Service;
 use App\Database;
 
-class ContentService extends Service
+final class ContentService extends Service
 {
 	private Database $db;
 

@@ -7,7 +7,7 @@ class Middlewares
 	public static function noUser(Core $core)
 	{
 		if (isset($core->session->user)) {
-			$core->routerPush("home");
+			$core->router->redirect($core->getPrevRoute());
 		}
 	}
 }

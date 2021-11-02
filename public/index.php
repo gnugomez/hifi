@@ -11,7 +11,7 @@ try {
 
 	$core->registerModulesNamespace("App\Modules\\");
 
-	$core->registerModule(__DIR__ . "/../app/frontend/Module.php", "Frontend");
+	$core->registerModule(__DIR__ . "/../apps/frontend/Module.php", "Frontend");
 	/**
 	 * Instance router and register
 	 */

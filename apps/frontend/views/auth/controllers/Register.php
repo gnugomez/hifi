@@ -2,7 +2,7 @@
 
 namespace App\Frontend\Controllers;
 
-use App\Services\AuthService, App\Session, App\Modules\frontend, App\Providers\Component;
+use App\Services\AuthService, App\Session, App\Providers\Component;
 
 class register extends Component
 {
@@ -13,7 +13,7 @@ class register extends Component
 		$res = $this->doRegister();
 
 		$data = [
-			'title' => 'Home',
+			'title' => 'Register',
 			'template' => '@auth/register.twig',
 			'res' => $res
 		];
@@ -45,12 +45,5 @@ class register extends Component
 		} else {
 			return [];
 		}
-	}
-
-	public function render(): string
-	{
-		$module = frontend::getInstance();
-		$module->loadTemplates();
-		return $module->twig->render('@auth/register.html.twig', $this->data);
 	}
 }

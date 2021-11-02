@@ -6,12 +6,11 @@ use App\Providers\Service;
 use App\Core;
 use App\Session;
 
-class AuthService extends Service
+final class AuthService extends Service
 {
 
 	private Session $session;
 	private ContentService $contentService;
-	private Core $core;
 
 	public function __construct()
 	{
