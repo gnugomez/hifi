@@ -17,6 +17,9 @@
     "url": "https://github.com/gnugomez/hifi/issues"
   },
   "homepage": "https://github.com/gnugomez/hifi#readme",
+  "devDependencies": {
+    "watch": "^1.0.2"
+  },
   "dependencies": {
     "@tailwindcss/aspect-ratio": "^0.3.0",
     "@tailwindcss/forms": "^0.3.4",
@@ -26,7 +29,6 @@
     "postcss": "^8.3.11",
     "postcss-cli": "^9.0.1",
     "postcss-scss": "^4.0.2",
-    "tailwindcss": "^2.2.19",
-    "watch": "^1.0.2"
+    "tailwindcss": "^2.2.19"
   }
 }
