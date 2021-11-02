@@ -1,0 +1,29 @@
+{
+  "name": "hifi",
+  "version": "0.0.3",
+  "description": "![Release](https://shields.io/github/v/release/gnugomez/hifi?include_prereleases&sort=date)\r ![License](https://shields.io/github/license/gnugomez/hifi)\r ![MostUsedLang](https://shields.io/github/languages/top/gnugomez/hifi)\r [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fgnugomez%2Fhifi%2Fbadge%3Fref%3Dmain&style=flat)](https://actions-badge.atrox.dev/gnugomez/hifi/goto?ref=main)\r # HiFi Songs Repo",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "postcss public/assets/theme.scss -o public/assets/dist/theme.css",
+    "watch": "watch 'npm run build:css' ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gnugomez/hifi.git"
+  },
+  "author": "Jordi Gómez Hidalgo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gnugomez/hifi/issues"
+  },
+  "homepage": "https://github.com/gnugomez/hifi#readme",
+  "dependencies": {
+    "@csstools/postcss-sass": "^4.0.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.3.11",
+    "postcss-cli": "^9.0.1",
+    "postcss-scss": "^4.0.2",
+    "tailwindcss": "^2.2.19",
+    "watch": "^1.0.2"
+  }
+}

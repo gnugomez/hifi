@@ -1,3 +1,6 @@
 vendor/
 cache/
 .env
+package-lock.json
+node_modules/
+public/assets/dist/
