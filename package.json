@@ -4,7 +4,7 @@
   "description": "![Release](https://shields.io/github/v/release/gnugomez/hifi?include_prereleases&sort=date)\r ![License](https://shields.io/github/license/gnugomez/hifi)\r ![MostUsedLang](https://shields.io/github/languages/top/gnugomez/hifi)\r [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fgnugomez%2Fhifi%2Fbadge%3Fref%3Dmain&style=flat)](https://actions-badge.atrox.dev/gnugomez/hifi/goto?ref=main)\r # HiFi Songs Repo",
   "main": "index.js",
   "scripts": {
-    "build:css": "postcss public/assets/theme.scss -o public/assets/dist/theme.css",
+    "build:css": "postcss public/assets/scss/theme.scss -o public/dist/assets/css/theme.css",
     "watch": "watch 'npm run build:css' ./apps"
   },
   "repository": {
