@@ -29,7 +29,7 @@ class login extends Component
 			$res = $this->auth->validateUser($user, $pass);
 			if (isset($res["success"])) {
 				$this->session->user = get_array_value($res["success"], "user");
-				$this->core->router->redirect($this->core->getPrevRoute());
+				$this->core->router->redirect('home');
 			}
 
 			return $res;
