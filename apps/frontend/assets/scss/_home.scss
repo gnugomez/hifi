@@ -1,0 +1,14 @@
+#hero {
+  .inner {
+    @apply min-h-screen grid grid-cols-1 lg:grid-cols-2;
+
+    .left,
+    .right {
+      @apply w-full mlg:aspect-w-1 mlg:aspect-h-1;
+
+      .wrapper {
+        @apply absolute inset-0 z-10 w-full h-full flex items-center justify-center px-16;
+      }
+    }
+  }
+}

@@ -2,8 +2,40 @@
 {{ include("@global/header.twig") }}
 <section id="hero">
   <div class="inner">
-    <div class="left"></div>
-    <div class="right"></div>
+    <div class="left relative overflow-hidden">
+      <img
+        class="absolute inset-0 w-full h-full object-cover"
+        src="/assets/img/waves-left.png"
+        alt=""
+      />
+      <img
+        class="absolute top-0 right-0"
+        src="/assets/img/blurred-elipse.png"
+        alt=""
+      />
+      <img
+        class="absolute bottom-0 left-0"
+        src="/assets/img/blurred-elipse-2.png"
+        alt=""
+      />
+    </div>
+    <div class="right relative">
+      <div class="wrapper">
+        <h1 class="font-roboto text-[6rem] text-white text-opacity-70">
+          The highest quality you even heared
+        </h1>
+      </div>
+      <img
+        class="absolute inset-0 w-full h-full object-cover"
+        src="/assets/img/frosted-gradient.jpg"
+        alt=""
+      />
+      <img
+        class="absolute inset-0 w-full h-full object-cover"
+        src="/assets/img/waves-right.svg"
+        alt=""
+      />
+    </div>
   </div>
 </section>
 {{ include("@global/footer.twig") }}
