@@ -37,6 +37,9 @@ module.exports = {
         primary: "#F38118",
         secondary: "#FF5C70",
       },
+      boxShadow: {
+        primary: "0px 15px 50px -12px rgba(242,169,96,1)",
+      },
     },
   },
   variants: {

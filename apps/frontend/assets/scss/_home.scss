@@ -1,13 +1,55 @@
 #hero {
+  @apply relative;
+
+  .bottom-icons {
+    @apply lg:absolute bottom-0 px-10 flex justify-center inset-x-0 w-full;
+
+    .wrapper {
+      @apply mlg:gap-10 bg-main-dark bg-opacity-70 backdrop-filter backdrop-blur-lg rounded-t-lg grid grid-cols-3 mlg:flex mlg:flex-col py-10 max-w-[80rem];
+    }
+
+    .icon-wrapper {
+      @apply mlg:w-full flex items-center gap-7 text-white lg:border-r border-white border-opacity-40 px-5;
+
+      &:hover {
+        img {
+          @apply transform scale-105;
+        }
+      }
+      img {
+        @apply transition-all duration-300 w-24;
+      }
+      h6 {
+        @apply text-2xl;
+      }
+
+      p {
+        @apply pt-2;
+      }
+
+      &:last-child {
+        @apply border-0 lg:pr-10;
+      }
+
+      &:first-child {
+        @apply lg:pl-10;
+      }
+    }
+  }
+
+  img {
+    @apply pointer-events-none;
+  }
+
   .inner {
     @apply min-h-screen grid grid-cols-1 lg:grid-cols-2;
 
     .left,
     .right {
-      @apply w-full mlg:aspect-w-1 mlg:aspect-h-1;
+      @apply w-full mlg:aspect-w-1 mlg:aspect-h-1 lg:pb-[10rem] overflow-hidden;
 
       .wrapper {
-        @apply absolute inset-0 z-10 w-full h-full flex items-center justify-center px-16;
+        @apply mlg:absolute relative z-10 w-full h-full flex flex-col items-center justify-center px-16;
       }
     }
   }
