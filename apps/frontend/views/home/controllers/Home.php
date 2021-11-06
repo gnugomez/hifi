@@ -4,7 +4,7 @@ namespace App\Frontend\Controllers;
 
 use App\Providers\Component;
 
-class home extends Component
+final class home extends Component
 {
 	public function setup(...$props): array
 	{

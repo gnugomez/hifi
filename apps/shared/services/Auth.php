@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Providers\Service;
 use App\Core;
 use App\Session;
+use Error;
 
 final class AuthService extends Service
 {

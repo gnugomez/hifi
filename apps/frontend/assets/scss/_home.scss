@@ -5,7 +5,7 @@
     @apply xl:absolute bottom-0 msm:px-4 mlg:px-7 px-10 flex justify-center inset-x-0 w-full;
 
     .wrapper {
-      @apply w-full mlg:gap-10 bg-main-dark bg-opacity-70 backdrop-filter backdrop-blur-lg rounded-t-lg grid grid-cols-3 mlg:flex mlg:flex-col py-10 mlg:py-5 max-w-[80rem];
+      @apply mlg:gap-10 bg-main-dark bg-opacity-70 backdrop-filter backdrop-blur-lg rounded-t-lg grid grid-cols-3 mlg:flex mlg:flex-col py-10 mlg:py-5 max-w-[80rem];
     }
 
     .icon-wrapper {

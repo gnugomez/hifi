@@ -13,7 +13,8 @@
   },
   "scripts": {
     "post-install-cmd": [
-      "npm run build:css"
+      "npm run build:css",
+      "npm run build:img"
     ]
   }
 }

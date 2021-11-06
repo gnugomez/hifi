@@ -2,6 +2,7 @@ const gulp = require("gulp");
 const postcss = require("gulp-postcss");
 const sass = require("gulp-sass")(require("sass"));
 const rucksack = require("rucksack-css");
+const imagemin = require("gulp-imagemin");
 
 const autoprefixer = require("autoprefixer");
 const tailwindcss = require("tailwindcss");
@@ -27,4 +28,11 @@ gulp.task("css", function () {
 
 gulp.task("watch:scss", function () {
   return gulp.watch(scssPath, ["css"]);
+});
+
+gulp.task("img", function () {
+  return gulp
+    .src("./apps/**/assets/img/*")
+    .pipe(imagemin())
+    .pipe(gulp.dest("./public/dist/"));
 });
