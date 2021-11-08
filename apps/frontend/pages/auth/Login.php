@@ -4,7 +4,7 @@ namespace hifi\Frontend;
 
 use hifi\Providers\Component, hifi\Modules\frontend, hifi\Services\AuthService, hifi\Session;
 
-class login extends Component
+final class login extends Component
 {
 
 	public function setup(...$props): array
@@ -24,9 +24,11 @@ class login extends Component
 		$this->auth = AuthService::getInstance();
 
 		if ($this->core->router->requestMethod === 'POST') {
+
 			$user = get_array_value($_POST, "user", null);
 			$pass = get_array_value($_POST, "pass", null);
 			$res = $this->auth->validateUser($user, $pass);
+
 			if (isset($res["success"])) {
 				$this->session->user = get_array_value($res["success"], "user");
 				$this->core->router->redirect('home');

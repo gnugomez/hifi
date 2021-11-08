@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build:css": "gulp css",
+    "build:img": "gulp img",
     "watch": "watch 'npm run build:css' ./apps"
   },
   "repository": {
@@ -25,6 +26,8 @@
     "@tailwindcss/typography": "^0.4.1",
     "autoprefixer": "^10.4.0",
     "cssnano": "^5.0.9",
+    "gulp": "^4.0.2",
+    "gulp-imagemin": "^7.1.0",
     "gulp-postcss": "^9.0.1",
     "gulp-sass": "^5.0.0",
     "postcss": "^8.3.11",
@@ -32,8 +35,7 @@
     "rucksack-css": "^1.0.2",
     "sass": "^1.43.4",
     "tailwindcss": "^2.2.19",
-    "watch": "^1.0.2",
-    "gulp": "^4.0.2"
+    "watch": "^1.0.2"
   },
   "browserslist": [
     "last 3 versions"

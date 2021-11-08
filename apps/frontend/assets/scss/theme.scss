@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "home";
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap");
+
+body {
+  @apply bg-main-dark font-zen;
+}
+
+.btn {
+  @apply cursor-pointer transform
+  hover:-translate-y-1
+  transition-all
+  duration-300;
+
+  &.btn-primary {
+    @apply bg-gradient-to-br
+  from-[#FBA85B]
+  to-primary
+  rounded-lg
+  text-white
+  shadow-primary;
+  }
+
+  &.btn-md {
+    @apply px-8
+    py-3.5;
+  }
+}

@@ -4,7 +4,7 @@ namespace hifi\Frontend;
 
 use hifi\Services\AuthService, hifi\Session, hifi\Providers\Component;
 
-class register extends Component
+final class register extends Component
 {
 	public $errors = array();
 
@@ -33,7 +33,9 @@ class register extends Component
 
 		if ($this->core->router->requestMethod === 'POST') {
 			if ($pass == $cpass) {
+
 				$res = $this->auth->registerUser($user, $email, $pass);
+
 				if (isset($res["success"])) {
 					$this->core->router->redirect("login");
 				} else if (isset($res["errors"])) {

@@ -4,7 +4,7 @@ namespace hifi\Providers;
 
 use hifi\Core;
 
-abstract class Component implements IView
+abstract class Component implements IComponent
 {
 	public Core $core;
 
@@ -59,7 +59,7 @@ abstract class Component implements IView
 	}
 }
 
-interface IView
+interface IComponent
 {
 	public function setup(...$args): array;
 }
