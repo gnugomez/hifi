@@ -27,7 +27,7 @@ try {
 
 	$router->add([
 		'methods' => 'GET|POST',
-		'route' => '/auth/login',
+		'route' => '/login',
 		'module' => 'Frontend',
 		'controller' => 'login',
 		'name' => 'login',
@@ -36,7 +36,7 @@ try {
 
 	$router->add([
 		'methods' => 'GET|POST',
-		'route' => '/auth/register',
+		'route' => '/register',
 		'module' => 'Frontend',
 		'controller' => 'register',
 		'name' => 'register',
