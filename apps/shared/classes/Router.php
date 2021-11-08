@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace hifi;
 
 use AltoRouter, RuntimeException;
 

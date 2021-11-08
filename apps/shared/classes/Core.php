@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
+namespace hifi;
 
-use App\Providers\Component, App\Services\AuthService, App\Router, RuntimeException;
+use hifi\Providers\Component, hifi\Providers\Module, hifi\Services\AuthService, hifi\Router, RuntimeException;
 
 final class Core
 {
@@ -49,7 +49,7 @@ final class Core
 	 *
 	 * @return void
 	 */
-	public function mountApp(): void
+	public function mounthifi(): void
 	{
 
 		$match = $this->router->match();
@@ -68,7 +68,7 @@ final class Core
 			} else {
 				$this->loadModule($match['module']);
 				$module = $this->modulesNamespace . $match['module'];
-				$module = new $module;
+				$module = $module::getInstance();
 				$controller = get_array_value($module->getControllers(), $match['controller'], false);
 
 				if ($controller) {

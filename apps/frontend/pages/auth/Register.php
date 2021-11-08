@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Frontend\Controllers;
+namespace hifi\Frontend;
 
-use App\Services\AuthService, App\Session, App\Providers\Component;
+use hifi\Services\AuthService, hifi\Session, hifi\Providers\Component;
 
 final class register extends Component
 {

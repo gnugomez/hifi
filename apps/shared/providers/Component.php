@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Providers;
+namespace hifi\Providers;
 
-use App\Core;
+use hifi\Core;
 
 abstract class Component implements IComponent
 {
@@ -26,6 +26,7 @@ abstract class Component implements IComponent
 		$this->data["context"] = $this->core->getContext();
 		$this->data += $this->setup(...$args);
 		$this->template = $this->data["template"];
+		$this->layout = isset($this->data["layout"]) ? $this->data["layout"] : "default";
 	}
 
 	/** Getters */
@@ -34,9 +35,19 @@ abstract class Component implements IComponent
 		return $this->data;
 	}
 
+	public function getDataKeyifExists(string $key)
+	{
+		return isset($this->data[$key]) ? $this->data[$key] : [];
+	}
+
 	public function getTemplate(): string
 	{
 		return $this->template;
+	}
+
+	public function getLayout(): string
+	{
+		return $this->layout;
 	}
 
 	/** Lifecycle hooks */

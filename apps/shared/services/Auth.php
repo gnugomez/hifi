@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services;
+namespace hifi\Services;
 
-use App\Providers\Service;
-use App\Core;
-use App\Session;
+use hifi\Providers\Service;
+use hifi\Core;
+use hifi\Session;
 use Error;
 
 final class AuthService extends Service

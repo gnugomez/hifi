@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Frontend\Controllers;
+namespace hifi\Frontend;
 
-use App\Providers\Component;
+use hifi\Providers\Component;
 
 final class home extends Component
 {
@@ -11,12 +11,6 @@ final class home extends Component
 		return [
 			'title' => 'Home',
 			'template' => '@home/home.twig',
-			'js' => [
-				'home/home.js'
-			],
-			'css' => [
-				'home/home.css'
-			]
 		];
 	}
 }

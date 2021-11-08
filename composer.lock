@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9b395b7fa317422be134d132b38f7e32",
+    "content-hash": "a923b2386dd0fa493910868ed5a20b72",
     "packages": [
         {
             "name": "altorouter/altorouter",
@@ -65,6 +65,56 @@
                 "source": "https://github.com/dannyvankooten/AltoRouter/tree/2.0.2"
             },
             "time": "2020-03-09T08:34:59+00:00"
+        },
+        {
+            "name": "pedroborges/meta-tags",
+            "version": "v0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pedroborges/meta-tags.git",
+                "reference": "e6259f598019ab44f12c0e15d4b465d00b4d39cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pedroborges/meta-tags/zipball/e6259f598019ab44f12c0e15d4b465d00b4d39cb",
+                "reference": "e6259f598019ab44f12c0e15d4b465d00b4d39cb",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PedroBorges\\MetaTags\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pedro Borges",
+                    "email": "oi@pedroborg.es"
+                }
+            ],
+            "description": "HTML meta tags generator for PHP.",
+            "homepage": "https://github.com/pedroborges/meta-tags",
+            "keywords": [
+                "facebook",
+                "head",
+                "meta",
+                "meta tags",
+                "open graph",
+                "seo",
+                "twitter cards"
+            ],
+            "support": {
+                "issues": "https://github.com/pedroborges/meta-tags/issues",
+                "source": "https://github.com/pedroborges/meta-tags/tree/v0.0.2"
+            },
+            "time": "2018-07-07T18:21:26+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
