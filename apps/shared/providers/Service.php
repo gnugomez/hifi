@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace hifi\Providers;
 
 abstract class Service
 {

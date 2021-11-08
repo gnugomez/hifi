@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Frontend\Controllers;
+namespace hifi\Frontend;
 
-use App\Providers\Component, App\Modules\frontend, App\Services\AuthService, App\Session;
+use hifi\Providers\Component, hifi\Modules\frontend, hifi\Services\AuthService, hifi\Session;
 
 class login extends Component
 {

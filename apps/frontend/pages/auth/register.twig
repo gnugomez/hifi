@@ -1,6 +1,4 @@
-{{ include("@global/head.twig") }}
-
-<h1>Login</h1>
+<h1>Register</h1>
 <ul>
   {% for error in res.errors %}
   <li>{{ error }}</li>
@@ -8,6 +6,8 @@
 </ul>
 <form action="" method="post">
   <input type="text" name="user" placeholder="Username" />
+  <input type="email" name="email" placeholder="Email" />
   <input type="password" name="pass" placeholder="Password" />
-  <button type="submit">Entrar</button>
+  <input type="password" name="cpass" placeholder="Confirm password" />
+  <button type="submit">Registrame</button>
 </form>

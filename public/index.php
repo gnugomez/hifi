@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/load.php';
 
-use App\Core, App\Router;
+use hifi\Core, hifi\Router;
 
 try {
 	/**
@@ -9,7 +9,7 @@ try {
 	 */
 	$core = Core::getInstance();
 
-	$core->registerModulesNamespace("App\Modules\\");
+	$core->registerModulesNamespace("hifi\Modules\\");
 
 	$core->registerModule(__DIR__ . "/../apps/frontend/Module.php", "Frontend");
 	/**
@@ -31,7 +31,7 @@ try {
 		'module' => 'Frontend',
 		'controller' => 'login',
 		'name' => 'login',
-		'middleware' => 'App\Middlewares::noUser'
+		'middleware' => 'hifi\Middlewares::noUser'
 	]);
 
 	$router->add([
@@ -40,13 +40,13 @@ try {
 		'module' => 'Frontend',
 		'controller' => 'register',
 		'name' => 'register',
-		'middleware' => 'App\Middlewares::noUser'
+		'middleware' => 'hifi\Middlewares::noUser'
 	]);
 
 	$router->add([
 		'methods' => 'GET|POST',
 		'route' => '/logout',
-		'action' => 'App\Session::logout'
+		'action' => 'hifi\Session::logout'
 	]);
 
 	/**
@@ -62,7 +62,7 @@ try {
 	/**
 	 * Handle the request
 	 */
-	$core->mountApp();
+	$core->mounthifi();
 } catch (PDOException $e) {
 	echo $e;
 } catch (Exception $e) {

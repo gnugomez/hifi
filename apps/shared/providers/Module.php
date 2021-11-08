@@ -1,15 +1,14 @@
 <?php
 
-namespace App;
+namespace hifi\Providers;
 
-use RuntimeException, App\Providers\Component;
+use RuntimeException, hifi\Providers\Component;
 
-abstract class Module
+abstract class Module implements IModule
 {
-
-	private array $templates;
 	private array $controllers;
 	private static Module $instance;
+
 
 	/**
 	 * This method returns the instance of the module.
@@ -26,10 +25,6 @@ abstract class Module
 	}
 
 	/** Getters */
-	public function getTemplates(): array
-	{
-		return $this->templates;
-	}
 
 	public function getControllers(): array
 	{
@@ -37,18 +32,6 @@ abstract class Module
 	}
 
 	/** end of getters */
-
-	/**
-	 * This method adds the path of the template to the templates array.
-	 * @return void
-	 */
-	public function registerTemplates($path, $name): void
-	{
-		if (isset($this->templates[$name])) {
-			throw new RuntimeException("Can not redeclare template '{$name}'");
-		}
-		$this->templates[$name] = $path;
-	}
 
 	/**
 	 * This method adds the the path class and name of a controller to the controllers array with a given array of params.
@@ -83,34 +66,13 @@ abstract class Module
 	{
 		require_once $this->controllers[$name]['path'];
 	}
+}
 
-	/**
-	 * This method instances twig and saves the instance in the module in order to use it inside controllers.
-	 *
-	 * @return void
-	 */
-	public function loadTemplates(): void
-	{
-		if (!isset($this->templates['global'])) {
-			throw new RuntimeException("You need to declare a global templates namespace in order to load all other templates");
-		}
-
-		$this->loader = new \Twig\Loader\FilesystemLoader($this->templates['global'], 'global');
-		$this->twig = new \Twig\Environment($this->loader, ['debug' => true]);
-
-		foreach ($this->templates as $namespace => $path) {
-			$this->loader->addPath($path, $namespace);
-		}
-	}
-
+interface IModule
+{
 	/**
 	 * This method outputs the render of a given controller.
 	 * @param Component $component
 	 */
-	public function render(Component $component)
-	{
-		$this->loadTemplates();
-		$template = $this->twig->load($component->getTemplate());
-		echo $template->render($component->getData());
-	}
+	public function render(Component $component): void;
 }

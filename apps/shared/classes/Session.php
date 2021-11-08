@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace hifi;
 /*
     Use the static method getInstance to get the object.
 */

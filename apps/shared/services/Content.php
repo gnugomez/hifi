@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Services;
+namespace hifi\Services;
 
-use App\Providers\Service;
-use App\Database;
+use hifi\Providers\Service;
+use hifi\Database;
 
 final class ContentService extends Service
 {

@@ -6,7 +6,8 @@
     "php": "^8.0.0",
     "thunderer/shortcode": "^0.7",
     "altorouter/altorouter": "^2.0.2",
-    "twig/twig": "^3.0"
+    "twig/twig": "^3.0",
+    "pedroborges/meta-tags": "^0.0.2"
   },
   "require-dev": {
     "heroku/heroku-buildpack-php": "*"
