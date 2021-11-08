@@ -2,13 +2,9 @@
 
 namespace App;
 
-use App\Providers\Component;
+use App\Providers\Component, App\Services\AuthService, App\Router, RuntimeException;
 
-use AltoRouter;
-use App\Services\AuthService;
-use RuntimeException;
-
-class Core extends AltoRouter
+final class Core
 {
 	private static Core $instance;
 
@@ -79,6 +75,8 @@ class Core extends AltoRouter
 					$module->loadController($match['controller']);
 					$controller = new $controller['class']($match['params']);
 					$this->handle($module, $controller);
+				} else {
+					throw new RuntimeException("Controller not found");
 				}
 			}
 		} else {

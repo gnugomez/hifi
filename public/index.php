@@ -15,7 +15,7 @@ try {
 	/**
 	 * Instance router and register
 	 */
-	$router = Router::getInstance();
+	$router = new Router();
 
 	$router->add([
 		'methods' => 'GET',
