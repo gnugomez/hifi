@@ -33,12 +33,17 @@
         </h1>
       </div>
       <form action="" method="post">
-        <input type="text" name="user" placeholder="Username" />
-        <input type="email" name="email" placeholder="Email" />
-        <input type="password" name="pass" placeholder="Password" />
-        <input type="password" name="cpass" placeholder="Confirm password" />
+        <input type="text" name="user" placeholder="Username" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="pass" placeholder="Password" required />
+        <input
+          type="password"
+          name="cpass"
+          placeholder="Confirm password"
+          required
+        />
         <div class="checkbox">
-          <input id="acceptance" type="checkbox" name="remember" />
+          <input id="acceptance" type="checkbox" name="remember" required />
           <label for="acceptance"
             >I accept the terms, privacy and cookie policy</label
           >
