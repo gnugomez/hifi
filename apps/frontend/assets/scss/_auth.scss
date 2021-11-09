@@ -3,10 +3,14 @@
     @apply absolute inset-0 w-full h-full object-cover;
   }
   .auth-wrapper {
-    @apply relative z-10 min-h-screen flex items-center justify-center;
+    @apply relative z-10 min-h-screen flex items-center justify-center px-7;
 
     .header {
       @apply flex justify-center items-center;
+
+      h1 {
+        @apply px-7;
+      }
     }
 
     form {
