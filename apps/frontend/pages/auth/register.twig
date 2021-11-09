@@ -1,13 +1,59 @@
-<h1>Register</h1>
-<ul>
+<!-- <ul>
   {% for error in res.errors %}
   <li>{{ error }}</li>
   {% endfor %}
-</ul>
-<form action="" method="post">
-  <input type="text" name="user" placeholder="Username" />
-  <input type="email" name="email" placeholder="Email" />
-  <input type="password" name="pass" placeholder="Password" />
-  <input type="password" name="cpass" placeholder="Confirm password" />
-  <button type="submit">Registrame</button>
-</form>
+</ul> -->
+
+<section id="auth">
+  <img
+    src="/dist/frontend/assets/img/auth/register-bg.jpg"
+    class="bg-image"
+    alt=""
+  />
+  <div class="auth-wrapper">
+    <div class="register">
+      <div class="header relative">
+        <img
+          src="/dist/frontend/assets/img/auth/register-cover.png"
+          class="bg-image"
+          alt=""
+        />
+        <h1
+          class="
+            font-roboto
+            text-5xl text-center
+            py-12
+            relative
+            z-10
+            font-light
+            text-white
+          "
+        >
+          Create your account
+        </h1>
+      </div>
+      <form action="" method="post">
+        <input type="text" name="user" placeholder="Username" />
+        <input type="email" name="email" placeholder="Email" />
+        <input type="password" name="pass" placeholder="Password" />
+        <input type="password" name="cpass" placeholder="Confirm password" />
+        <div class="checkbox">
+          <input id="acceptance" type="checkbox" name="remember" />
+          <label for="acceptance"
+            >I accept the terms, privacy and cookie policy</label
+          >
+        </div>
+        <span class="text-center text-sm"
+          >Already have an account?
+          <a class="link" href="/login">Login.</a></span
+        >
+        <button
+          class="btn btn-secondary btn-md inline-block mx-auto"
+          type="submit"
+        >
+          Register
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

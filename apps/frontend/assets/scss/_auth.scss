@@ -1,0 +1,47 @@
+#auth {
+  .bg-image {
+    @apply absolute inset-0 w-full h-full object-cover;
+  }
+  .auth-wrapper {
+    @apply relative z-10 min-h-screen flex items-center justify-center;
+
+    .header {
+      @apply flex justify-center items-center;
+    }
+
+    form {
+      @apply flex flex-col gap-4 p-4 text-white;
+
+      input {
+        @apply font-bold p-2 bg-main-dark bg-opacity-25 border-2 border-main-dark border-opacity-50 rounded-lg placeholder-white placeholder-opacity-50 text-white focus:ring-0;
+
+        &:focus {
+          @apply border-primaryLight border-opacity-50 bg-primaryLight bg-opacity-25 shadow-light;
+        }
+
+        &:not([type="checkbox"]) {
+          @apply px-3 py-4;
+        }
+      }
+      .checkbox {
+        @apply flex gap-2 items-center text-sm;
+
+        input {
+          @apply checked:bg-primaryLight rounded-md focus:ring-offset-0;
+        }
+      }
+    }
+  }
+  .login,
+  .register {
+    @apply bg-main-dark bg-opacity-70 border-2 border-main-dark border-opacity-50 rounded-lg backdrop-filter backdrop-blur-lg w-full;
+  }
+
+  .login {
+    @apply max-w-[23rem];
+  }
+
+  .register {
+    @apply max-w-[46rem] md:grid md:grid-cols-2;
+  }
+}
