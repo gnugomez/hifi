@@ -4,12 +4,12 @@
   {% endfor %}
 </ul> -->
 <section id="auth">
-  <img
-    src="/dist/frontend/assets/img/auth/login-bg.jpg"
-    class="bg-image"
-    alt=""
-  />
   <div class="auth-wrapper">
+    <img
+      src="/dist/frontend/assets/img/auth/login-bg.jpg"
+      class="bg-image"
+      alt=""
+    />
     <div class="login">
       <div class="header relative">
         <img
@@ -32,8 +32,8 @@
         </h1>
       </div>
       <form action="" method="post">
-        <input type="text" name="user" placeholder="Username" />
-        <input type="password" name="pass" placeholder="Password" />
+        <input type="text" name="user" placeholder="Username" required />
+        <input type="password" name="pass" placeholder="Password" required />
         <div class="checkbox">
           <input id="remember" type="checkbox" name="remember" />
           <label for="remember">Remember me.</label>
