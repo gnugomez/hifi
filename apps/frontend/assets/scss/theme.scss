@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import "home";
+@import "auth";
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap");
 
@@ -12,9 +13,9 @@ body {
 
 .btn {
   @apply cursor-pointer transform
-  hover:-translate-y-1
-  transition-all
-  duration-300;
+  hover:-translate-y-1;
+
+  transition: transform 0.3s ease-in-out;
 
   &.btn-primary {
     @apply bg-gradient-to-br
@@ -25,8 +26,21 @@ body {
   shadow-primary;
   }
 
+  &.btn-secondary {
+    @apply bg-gradient-to-br
+  from-[#FCE7D5]
+  to-[#FBC495]
+  rounded-lg
+  text-main-dark
+  shadow-primary;
+  }
+
   &.btn-md {
     @apply px-8
     py-3.5;
   }
+}
+
+a.link {
+  @apply text-primaryLight underline;
 }

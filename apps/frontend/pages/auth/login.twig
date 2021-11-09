@@ -1,11 +1,54 @@
-<h1>Login</h1>
-<ul>
+<!-- <ul>
   {% for error in res.errors %}
   <li>{{ error }}</li>
   {% endfor %}
-</ul>
-<form action="" method="post">
-  <input type="text" name="user" placeholder="Username" />
-  <input type="password" name="pass" placeholder="Password" />
-  <button type="submit">Entrar</button>
-</form>
+</ul> -->
+<section id="auth">
+  <img
+    src="/dist/frontend/assets/img/auth/login-bg.jpg"
+    class="bg-image"
+    alt=""
+  />
+  <div class="auth-wrapper">
+    <div class="login">
+      <div class="header relative">
+        <img
+          src="/dist/frontend/assets/img/auth/login-cover.png"
+          class="bg-image"
+          alt=""
+        />
+        <h1
+          class="
+            font-roboto
+            text-5xl text-center
+            py-12
+            relative
+            font-light
+            z-10
+            text-white
+          "
+        >
+          Sign in
+        </h1>
+      </div>
+      <form action="" method="post">
+        <input type="text" name="user" placeholder="Username" />
+        <input type="password" name="pass" placeholder="Password" />
+        <div class="checkbox">
+          <input id="remember" type="checkbox" name="remember" />
+          <label for="remember">Remember me.</label>
+        </div>
+        <span class="text-center text-sm"
+          >Don’t have an account?
+          <a class="link" href="/register">Register now.</a></span
+        >
+        <button
+          type="submit"
+          class="btn btn-secondary btn-md inline-block mx-auto"
+        >
+          Sign in
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

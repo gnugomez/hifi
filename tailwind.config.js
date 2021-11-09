@@ -2,11 +2,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   mode: "jit",
-  purge: [
-    "./apps/frontend/templates/*.twig",
-    "./apps/frontend/pages/**/*.twig",
-    "./apps/frontend/pages/**/*.php",
-  ],
+  purge: ["./apps/frontend/templates/*.twig", "./apps/frontend/pages/**"],
   darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
@@ -35,10 +31,12 @@ module.exports = {
           dark: "#1B1907",
         },
         primary: "#F38118",
+        primaryLight: "#FFB068",
         secondary: "#FF5C70",
       },
       boxShadow: {
         primary: "0px 15px 50px -12px rgba(242,169,96,1)",
+        light: "0px 0px 50px -12px rgba(243,129,24,0.61)",
       },
     },
   },

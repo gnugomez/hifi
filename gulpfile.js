@@ -32,7 +32,7 @@ gulp.task("watch:scss", function () {
 
 gulp.task("img", function () {
   return gulp
-    .src("./apps/**/assets/img/*")
+    .src("./apps/**/assets/img/**")
     .pipe(imagemin())
     .pipe(gulp.dest("./public/dist/"));
 });
