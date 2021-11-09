@@ -3,7 +3,7 @@
     @apply absolute inset-0 w-full h-full object-cover;
   }
   .auth-wrapper {
-    @apply relative z-10 min-h-screen flex items-center justify-center px-7;
+    @apply relative z-10 min-h-screen flex items-center justify-center p-7;
 
     .header {
       @apply flex justify-center items-center;
@@ -17,10 +17,10 @@
       @apply flex flex-col gap-4 p-4 text-white;
 
       input {
-        @apply font-bold p-2 bg-main-dark bg-opacity-25 border-2 border-main-dark border-opacity-50 rounded-lg placeholder-white placeholder-opacity-50 text-white focus:ring-0;
+        @apply border-0 font-bold p-2 bg-main-dark bg-opacity-25 rounded-lg placeholder-white placeholder-opacity-50 text-white focus:ring-0;
 
         &:focus {
-          @apply border-primaryLight border-opacity-50 bg-primaryLight bg-opacity-25 shadow-light;
+          @apply ring-2 ring-primaryLight ring-opacity-50 bg-primaryLight bg-opacity-25 shadow-light;
         }
 
         &:not([type="checkbox"]) {
@@ -31,7 +31,7 @@
         @apply flex gap-2 items-center text-sm;
 
         input {
-          @apply checked:bg-primaryLight rounded-md focus:ring-offset-0;
+          @apply checked:bg-primaryLight rounded-sm focus:ring-offset-0;
         }
       }
     }
