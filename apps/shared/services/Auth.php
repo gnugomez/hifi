@@ -44,13 +44,22 @@ final class AuthService extends Service
 					unset($queryUser[0]["password"]);
 					$success["user"] = $queryUser[0];
 				} else {
-					$errors["wrong_password"] = "el nombre de usuario o la contraseña son incorrectos";
+					$errors[] = [
+						"fields" => ["username", "password"],
+						"message" => "El nombre de usuario o la contraseña son incorrectos"
+					];
 				}
 			} else {
-				$errors["user_do_not_exist"] = "el usuario que has introducido no existe";
+				$errors[] = [
+					"fields" => ["username"],
+					"message" => "El usuario que has introducido no existe"
+				];
 			}
 		} else {
-			$errors["no_user_and_pass"] = "introduce usuario y contraseña";
+			$errors[] = [
+				"fields" => ["username", "password"],
+				"message" => "introduce usuario y contraseña"
+			];
 		}
 		$res[$errors ? "errors" : "success"] = $errors ?  $errors :  $success;
 		return $res;
@@ -70,13 +79,22 @@ final class AuthService extends Service
 					$this->contentService->addUser($email, $user, $hashedPass);
 					$success["user_registered"] = $queryUser;
 				} else {
-					$errors["wrong_email"] = "El correo introducido no es válido";
+					$errors[] = [
+						"fields" => ["email"],
+						"message" => "El correo introducido no es válido"
+					];
 				}
 			} else {
-				$errors["email_or_username_taken"] = "El nombre de usuario o el correo ya esta en uso por otro usuario";
+				$errors[] = [
+					"fields" => ["email", "username"],
+					"message" => "El nombre de usuario o el correo ya esta en uso por otro usuario"
+				];
 			}
 		} else {
-			$errors["empty_fields"] = "Debes rellenar todos los campos";
+			$errors[] = [
+				"fields" => ["username", "email", "password", "cpassword"],
+				"message" => "Debes rellenar todos los campos"
+			];
 		}
 
 		$res[$errors ? "errors" : "success"] = $errors ?  $errors :  $success;

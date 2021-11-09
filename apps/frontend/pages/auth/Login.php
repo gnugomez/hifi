@@ -9,13 +9,44 @@ final class login extends Component
 
 	public function setup(...$props): array
 	{
-		$res = $this->doLogin();
-
-		return [
+		$data = [
 			'title' => 'Login',
 			'template' => '@auth/login.twig',
-			'res' => $res
+			'form' => [
+				'action' => '/login',
+				'method' => 'POST',
+				'fields' => [
+					'username' => [
+						'name' => 'user',
+						'label' => 'Username',
+						'type' => 'text',
+						'value' => get_array_value($_POST, 'user', ''),
+						'required' => 'true'
+					],
+					'password' => [
+						'name' => 'pass',
+						'label' => 'Password',
+						'type' => 'password',
+						'value' => get_array_value($_POST, 'pass', ''),
+						'required' => 'true'
+					],
+				]
+			]
 		];
+
+		$res = $this->doLogin();
+
+		if (isset($res['errors'])) {
+			$errors = get_array_value($res, 'errors');
+
+			foreach ($errors as $error) {
+				foreach ($error['fields'] as $field) {
+					$data['form']['fields'][$field]['error'] = $error['message'];
+				}
+			}
+		}
+
+		return $data;
 	}
 
 	public function doLogin(): array

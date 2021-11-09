@@ -13,7 +13,7 @@
 
       &:hover {
         img {
-          @apply transform scale-105;
+          transform: scale(1.05) perspective(400px) rotateY(15deg);
         }
       }
       img {

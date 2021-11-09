@@ -10,13 +10,57 @@ final class register extends Component
 
 	public function setup(...$props): array
 	{
-		$res = $this->doRegister();
 
 		$data = [
 			'title' => 'Register',
 			'template' => '@auth/register.twig',
-			'res' => $res
+			'form' => [
+				'action' => '/register',
+				'method' => 'POST',
+				'fields' => [
+					'username' => [
+						'name' => 'user',
+						'label' => 'Username',
+						'type' => 'text',
+						'value' => get_array_value($_POST, 'user', ''),
+						'required' => 'true'
+					],
+					'email' => [
+						'name' => 'email',
+						'label' => 'Email',
+						'type' => 'email',
+						'value' => get_array_value($_POST, 'email', ''),
+						'required' => 'true'
+					],
+					'password' => [
+						'name' => 'pass',
+						'label' => 'Password',
+						'type' => 'password',
+						'value' => get_array_value($_POST, 'pass', ''),
+						'required' => 'true'
+					],
+					'cpassword' => [
+						'name' => 'cpass',
+						'label' => 'Confirm password',
+						'type' => 'password',
+						'value' => get_array_value($_POST, 'cpass', ''),
+						'required' => 'true'
+					],
+				]
+			]
 		];
+
+		$res = $this->doRegister();
+
+		if (isset($res['errors'])) {
+			$errors = get_array_value($res, 'errors');
+
+			foreach ($errors as $error) {
+				foreach ($error['fields'] as $field) {
+					$data['form']['fields'][$field]['error'] = $error['message'];
+				}
+			}
+		}
 
 		return $data;
 	}
@@ -42,7 +86,12 @@ final class register extends Component
 					return $res;
 				}
 			} else {
-				return ["errors" => ["passwords_dont_match" => "Las contraseña no coinciden"]];
+				return [
+					"errors" => [[
+						"fields" => ["password", "cpassword"],
+						"message" => "Las contraseña no coinciden"
+					]]
+				];
 			}
 		} else {
 			return [];

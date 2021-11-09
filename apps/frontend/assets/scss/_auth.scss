@@ -1,6 +1,14 @@
 #auth {
   @apply relative;
 
+  .error {
+    @apply text-xs text-red-400 font-bold pl-2 pt-1;
+  }
+
+  .input-wrapper {
+    @apply flex flex-col;
+  }
+
   .bg-image {
     @apply absolute inset-0 w-full h-full object-cover;
   }
@@ -20,6 +28,10 @@
 
       input {
         @apply border-0 font-bold p-2 bg-main-dark bg-opacity-25 rounded-lg placeholder-white placeholder-opacity-50 text-white focus:ring-0;
+
+        &.field-error {
+          @apply ring-2 ring-red-400 ring-opacity-50 bg-red-400 bg-opacity-25;
+        }
 
         &:focus {
           @apply ring-2 ring-primaryLight ring-opacity-50 bg-primaryLight bg-opacity-25 shadow-light;
