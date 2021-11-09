@@ -12,7 +12,7 @@ body {
 }
 
 .btn {
-  @apply cursor-pointer transform
+  @apply whitespace-nowrap cursor-pointer transform
   hover:-translate-y-1;
 
   transition: transform 0.3s ease-in-out;
