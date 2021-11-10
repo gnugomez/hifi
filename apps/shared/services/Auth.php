@@ -1,10 +1,10 @@
 <?php
 
-namespace hifi\Services;
+namespace JGomez\Services;
 
-use hifi\Providers\Service;
-use hifi\Core;
-use hifi\Session;
+use JGomez\Providers\Service;
+use JGomez\Core;
+use JGomez\Session;
 use Error;
 
 final class AuthService extends Service

@@ -1,6 +1,6 @@
 <?php
 
-namespace hifi;
+namespace JGomez;
 
 use AltoRouter, RuntimeException;
 

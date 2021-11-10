@@ -1,10 +1,10 @@
 <?php
 
-namespace hifi;
+namespace JGomez;
 
-use hifi\Providers\Component, hifi\Providers\Module, hifi\Services\AuthService, hifi\Router, RuntimeException;
+use JGomez\Providers\Component, JGomez\Providers\Module, JGomez\Services\AuthService, JGomez\Router, RuntimeException;
 
-final class Core
+class Core
 {
 	private static Core $instance;
 
@@ -19,8 +19,8 @@ final class Core
 	private string $modulesNamespace;
 
 
-	public static function getInstance()
-	{
+	public static function getInstance(): Core
+    {
 		if (!isset(self::$instance)) {
 			self::$instance = new self;
 		}
@@ -49,7 +49,7 @@ final class Core
 	 *
 	 * @return void
 	 */
-	public function mounthifi(): void
+	public function mountApp(): void
 	{
 
 		$match = $this->router->match();
@@ -100,7 +100,7 @@ final class Core
 
 	public function getContext(): array
 	{
-		return ['isLoggedin' => AuthService::getInstance()->isloggedin()];
+		return ['isLogged' => AuthService::getInstance()->isloggedin()];
 	}
 
 	public function setUpSessions(): void

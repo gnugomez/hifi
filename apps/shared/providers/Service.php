@@ -1,6 +1,6 @@
 <?php
 
-namespace hifi\Providers;
+namespace JGomez\Providers;
 
 abstract class Service
 {

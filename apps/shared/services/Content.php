@@ -1,9 +1,9 @@
 <?php
 
-namespace hifi\Services;
+namespace JGomez\Services;
 
-use hifi\Providers\Service;
-use hifi\Database;
+use JGomez\Providers\Service;
+use JGomez\Database;
 
 final class ContentService extends Service
 {

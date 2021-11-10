@@ -13,7 +13,8 @@
 
       &:hover {
         img {
-          transform: scale(1.05) perspective(400px) rotateY(15deg);
+          transform: perspective(400px) rotateY(15deg) translateZ(20px);
+          transform-style: preserve-3d;
         }
       }
       img {

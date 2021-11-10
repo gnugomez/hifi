@@ -1,8 +1,8 @@
 <?php
 
-namespace hifi\Frontend;
+namespace JGomez\Frontend;
 
-use hifi\Providers\Component;
+use JGomez\Providers\Component;
 
 final class home extends Component
 {

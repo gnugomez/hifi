@@ -1,8 +1,8 @@
 <?php
 
-namespace hifi\Frontend;
+namespace JGomez\Frontend;
 
-use hifi\Providers\Component, hifi\Modules\frontend, hifi\Services\AuthService, hifi\Session;
+use JGomez\Providers\Component, JGomez\Modules\frontend, JGomez\Services\AuthService, JGomez\Session;
 
 final class login extends Component
 {

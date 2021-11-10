@@ -1,8 +1,8 @@
 <?php
 
-namespace hifi\Frontend;
+namespace JGomez\Frontend;
 
-use hifi\Services\AuthService, hifi\Session, hifi\Providers\Component;
+use JGomez\Services\AuthService, JGomez\Session, JGomez\Providers\Component;
 
 final class register extends Component
 {

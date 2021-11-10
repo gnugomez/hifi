@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/load.php';
 
-use hifi\Core, hifi\Router;
+use JGomez\Core, JGomez\Router;
 
 try {
 	/**
@@ -9,7 +9,7 @@ try {
 	 */
 	$core = Core::getInstance();
 
-	$core->registerModulesNamespace("hifi\Modules\\");
+	$core->registerModulesNamespace("JGomez\Modules\\");
 
 	$core->registerModule(__DIR__ . "/../apps/frontend/Module.php", "Frontend");
 	/**
@@ -31,7 +31,7 @@ try {
 		'module' => 'Frontend',
 		'controller' => 'login',
 		'name' => 'login',
-		'middleware' => 'hifi\Middlewares::noUser'
+		'middleware' => 'JGomez\Middlewares::noUser'
 	]);
 
 	$router->add([
@@ -40,13 +40,13 @@ try {
 		'module' => 'Frontend',
 		'controller' => 'register',
 		'name' => 'register',
-		'middleware' => 'hifi\Middlewares::noUser'
+		'middleware' => 'JGomez\Middlewares::noUser'
 	]);
 
 	$router->add([
 		'methods' => 'GET|POST',
 		'route' => '/logout',
-		'action' => 'hifi\Session::logout'
+		'action' => 'JGomez\Session::logout'
 	]);
 
 	/**
@@ -62,9 +62,7 @@ try {
 	/**
 	 * Handle the request
 	 */
-	$core->mounthifi();
-} catch (PDOException $e) {
-	echo $e;
-} catch (Exception $e) {
+	$core->mountApp();
+} catch (PDOException | Exception $e) {
 	echo $e;
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace hifi;
+namespace JGomez;
 /*
     Use the static method getInstance to get the object.
 */

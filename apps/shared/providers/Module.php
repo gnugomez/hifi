@@ -1,8 +1,8 @@
 <?php
 
-namespace hifi\Providers;
+namespace JGomez\Providers;
 
-use RuntimeException, hifi\Providers\Component;
+use RuntimeException, JGomez\Providers\Component;
 
 abstract class Module implements IModule
 {

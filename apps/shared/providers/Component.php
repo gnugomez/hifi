@@ -1,8 +1,8 @@
 <?php
 
-namespace hifi\Providers;
+namespace JGomez\Providers;
 
-use hifi\Core;
+use JGomez\Core;
 
 abstract class Component implements IComponent
 {

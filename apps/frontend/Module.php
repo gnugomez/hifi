@@ -1,8 +1,8 @@
 <?php
 
-namespace hifi\Modules;
+namespace JGomez\Modules;
 
-use hifi\Providers\Module, hifi\Providers\Component, PedroBorges\MetaTags\MetaTags, hifi\Core, RuntimeException;
+use JGomez\Providers\Module, JGomez\Providers\Component, PedroBorges\MetaTags\MetaTags, JGomez\Core, RuntimeException;
 
 class Frontend extends Module
 {
@@ -25,17 +25,17 @@ class Frontend extends Module
 		 */
 		$this->registerController([
 			'path' => __DIR__ . '/pages/home/Home.php',
-			'class' => 'hifi\Frontend\home',
+			'class' => 'JGomez\Frontend\home',
 			'name' => 'home'
 		]);
 		$this->registerController([
 			'path' => __DIR__ . '/pages/auth/Login.php',
-			'class' => 'hifi\Frontend\login',
+			'class' => 'JGomez\Frontend\login',
 			'name' => 'login'
 		]);
 		$this->registerController([
 			'path' => __DIR__ . '/pages/auth/Register.php',
-			'class' => 'hifi\Frontend\register',
+			'class' => 'JGomez\Frontend\register',
 			'name' => 'register'
 		]);
 
